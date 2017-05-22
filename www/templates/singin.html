@@ -1,0 +1,31 @@
+<ion-content class="background" scroll="false">
+    <ion-nav-back-button class="button-clear"></ion-nav-back-button>
+    <div class="singin">
+        <div class="row">
+            <div class="col col-center text-center heading">
+                <h2>OTP SIGN IN</h2>
+                <p>Enter your Phone Number</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-80 col-center col-offset-10">
+                <form name="singinForm" novalidate="">
+                    <label class="item-input item-floating-label animated fadeInLeft">
+                        <span class="input-label">Mobile number</span>
+                        <input type="tel" placeholder="Enter your Mobile Number" data-ng-model="user.number" name="number" ng-minlength="10" ng-maxlength="10" ng-pattern="phonePattern" required="" />
+                    </label>
+                    <div class="validation-msg" ng-show="singinForm.$submitted || singinForm.number.$touched">
+                        <div class="animated zoomIn" ng-show="singinForm.number.$error.required"><i class="ion-information-circled"></i> Enter Your Number</div>
+                        <div class="animated zoomIn" ng-show="singinForm.number.$error.pattern && singinForm.number.$invalid && singinForm.number.$error.minlength" class="help-block"><i class="ion-information-circled"></i> Enter Valid Mobile Number</div>
+                        <div class="animated zoomIn" ng-show="singinForm.number.$error.maxlength"><i class="ion-information-circled"></i> Enter only 10 digits number</div>
+                    </div>
+                    <div class="singup-button done-button animated fadeInUp">
+                        <button class="button button-block ink" ng-disabled="singinForm.$invalid" ng-click="sign()">
+                            Sign In
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-content class="background" scroll="false">
+    <div class="row">
+        <div class="col col-80 col-offset-10 entercode-part">
+            <div class="text-center heading animated zoomIn">
+                <h2>ENTER CODE</h2>
+                <p>from the SMS you just received</p>
+            </div>
+            <form name="OTPform">
+            <label class="item-input item-floating-label animated fadeInLeft">
+                        <span class="input-label">Enterd Code</span>
+                        <input type="tel" placeholder="Enter your OTP code" data-ng-model="user.otp"  name="number" required=""/>
+                    </label>
+                    <div class="validation-msg" ng-show="OTPform.$submitted || OTPform.otp.$touched">
+                        <div class="animated zoomIn" ng-show="OTPform.otp.$error.required"><i class="ion-information-circled"></i> Enter OTP code</div>
+                    </div>
+            <div class="done-button animated fadeInUp">
+                <button class="button button-block ink" ng-disabled="OTPform.$invalid" data-ng-click="otpverify()">
+                    Done
+                </button>
+                <p class="text-center">Did not receive sms. <a href="#">Repeat</a></p>
+            </div>
+            </form>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-content has-subheader="false">
+    <ion-view view-title="Offers" class="list-background">
+        <div class="offer-slider">
+            <ion-slide-box on-slide-changed="slideChanged(index)" ng-repeat="offer in offers">
+                <ion-slide>
+                    <div class="card">
+                        <div class="item item-body">
+                            <img class="full-image" src={{offer.image}}>
+                            <h3>{{offer.discount}} Off. Use <strong>{{offer.code}}</strong> to Grab the offer</h3>
+                            <h5>*Minimum order {{offer.total}}</h5>
+                        </div>
+                    </div>
+                </ion-slide>
+                 <!-- <ion-slide>
+                    <div class="card">
+                        <div class="item item-body">
+                            <img class="full-image" src={{offer.image}}>
+                            <h3>{{offer.discount}} Off. Use <strong>{{offer.code}}</strong> to Grab the offer</h3>
+                            <h5>*Minimum order {{offer.total}}</h5>
+                        </div>
+                    </div>
+                </ion-slide> -->
+            </ion-slide-box>
+        </div>
+    </ion-view>
+</ion-content>

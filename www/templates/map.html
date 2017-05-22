@@ -1,0 +1,9 @@
+<ion-content class="background" scroll="false" data-ng-init="init()">
+    <div id="maping">
+        <input type="text" id="searchTextField" class="form-control" placeholder="Please enter your loaction">
+    </div>
+    <div id="mapCanvas" data-tap-disabled="true"></div><button ng-click="showLocationChoser()" class="button mylocation ion-android-locate"></button>
+    <ion-footer-bar class="animated fadeInUp loadmenu-btn">
+        <a class="icon-left ion-ios-cart padding" data-ng-click="sendLatLng()">&nbsp; Load Menu</a>
+    </ion-footer-bar>
+</ion-content>

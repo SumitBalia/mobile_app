@@ -1,0 +1,49 @@
+<ion-side-menus enable-menu-with-back-views="true" ng-controller="MenuHeaderCtrl">
+    <ion-side-menu-content>
+        <ion-nav-bar class="navbar1" align-title="center">
+            <ion-nav-buttons side="left">
+                <button ng-if="removeButton" class="button button-icon button-clear" menu-toggle="left" style="padding-top: 6px;"><img src="img/menu.svg" width="32">
+                </button>
+                <button ng-if="addButton" ui-sref="app.menulist" ng-click="" class="button button-icon icon ion-chevron-left"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button ng-if="cartButton" class="button button-icon button-clear" ui-sref="app.mycart" >
+                    <span><img src="img/cart.svg" width="30px" style="margin: 6px 10px 0 0;"></span>
+                    <i ng-if="itemtotal" class="icon badge-container"><span class="badge badge-assertive"><i>{{itemtotal}}</i></span></i>
+                </button>
+                <button ng-if="payButton" class="button button-icon button-clear" ui-sref="app.check-out">
+                    <span><img src="img/check-out.svg" width="30px" style="margin: 8px 10px 0 0;"></span>
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent" ng-class="{expanded: isExpanded}"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" class="sidemenu-background">
+        <ion-header-bar class="dark-bg expanded">
+            <img src="./img/color-logo.png" alt="" style="width: 250px;padding: 25px;margin-left: 5px">
+            <!-- <h2>Menu</h2> -->
+        </ion-header-bar>
+        <ion-content class="has-expanded-header">
+            <ion-list class="menus">
+                <ion-item class="ink" nav-clear menu-close ng-click="loadmenu()">
+                    <span class="menu-icon"><img width="25" src="img/food_menu.svg"/></span><span id="sidemenu">Food Menu</span>
+                </ion-item>
+                <ion-item class="ink" nav-clear menu-close ui-sref="app.map">
+                    <span class="ion-ios-location-outline menu-icon"></span><span id="sidemenu"> Change Location</span>
+                </ion-item>
+                <ion-item class="ink" nav-clear menu-close ui-sref="app.offer">
+                    <span class="ion-ios-pricetag-outline menu-icon"></span><span id="sidemenu">Offer</span>
+                </ion-item>
+                <ion-item class="ink" nav-clear menu-close ui-sref="app.order_cancel">
+                    <span class="ion-ios-minus-outline menu-icon"></span><span id="sidemenu">Cancel Order</span>
+                </ion-item>
+                <ion-item class="ink" nav-clear menu-close ui-sref="app.contactUs">
+                    <span class="ion-ios-telephone-outline menu-icon"></span><span id="sidemenu">Contact Us</span>
+                </ion-item>
+                <ion-item class="ink" nav-clear menu-close ui-sref="app.splash" ng-click="logout()">
+                    <span class="ion-log-out menu-icon"></span><span id="sidemenu">Log Out</span>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

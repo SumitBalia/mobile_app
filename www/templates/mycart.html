@@ -1,0 +1,56 @@
+<ion-content data-ng-init="init()">
+    <ion-view view-title="My Cart" id="mycart" class="list-background">
+        <ion-scroll zooming="true" direction="y" style="height: 100%">
+            <div class="list card card-margin" id="list">
+                <div class="item-divider">
+                    <h4 class="text-center">Your items Cart</h4>
+                </div>
+                <div class="item item-text-wrap" ng-repeat="carts in cart">
+                    <div class="row">
+                        <div class="col-20 col-center">
+                            <img src={{carts.image}}>
+                        </div>
+                        <div class="col-offset-10"></div>
+                        <div class="col-50 col-center">
+                            <div>
+                                <h2><span>{{carts.quantity}} X </span>{{carts.title}}</h2>
+                                <h2>&#x20B9;{{carts.total_price}}</h2>
+                            </div>
+                        </div>
+                        <div class="col  col-center">
+                            <button class="button ionicon button-small ion-ios-minus-empty  button-minus" data-ng-click="clickMinus(carts.productID)"></button>
+                            <a class="button button-small button-lable">{{carts.quantity}}</a>
+                            <button class="button ionicon button-small ion-ios-plus-empty button-plus" data-ng-click="clickPlus(carts.productID)"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-center">
+                            <ion-list>
+                                <ion-item>
+                                    <p class="text-right">
+                                        <i class="ion-ios-arrow-left"></i><i class="ion-ios-arrow-left"></i> Swap to remove item</p>
+                                        <ion-option-button class="small-button completeRemove button-small" data-ng-click="clickRemove(carts.cartID)">Remove</ion-option-button>
+                                </ion-item>
+                            </ion-list>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="item-divider padding">
+                    <div class="row" ng-repeat="total in subtotal">
+                        <div class="col-75">
+                            <h4>{{total.title}}</h4>
+                        </div>
+                        <div class="col text-right">
+                            <h4>{{total.text}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </ion-scroll>
+        <ion-footer-bar>
+            <button class="ink footer-btn button button-block button-balanced" ui-sref="app.check-out">CheckOut</button>
+        </ion-footer-bar>
+    </ion-view>
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-content data-ng-init="init()">
+    <ion-view view-title="Menu" class="list-background">
+        <div class="search">
+            <input class="margin" value="" id="search" placeholder="Search" type="search" ng-model="test" />
+            <a id="clear" ng-click='clear()'>
+                X
+            </a>
+        </div>
+        <ion-scroll zooming="true" direction="y" style="height: 90%">
+            <div class="sub-menu-list">
+                <div class="list card card-margin" ng-repeat="sublists in sublist | filter:test">
+                    <div class="item item-text-wrap">
+                        <div class="row">
+                            <div class="col-33">
+                                <img src={{sublists.image}}>
+                            </div>
+                            <div class="col-offset-10"></div>
+                            <div class="col-33 col-center">
+                                <div>
+                                    <h2>{{sublists.title}}</h2>
+                                    <h2>{{sublists.price}}</h2>
+                                </div>
+                            </div>
+                            <div class="col col-center right-aling">
+                                <button class="button ionicon button-small ion-ios-minus-empty  button-minus" data-ng-click="clickMinus(sublists.productID)"></button>
+                                <a class="button button-small button-lable">{{sublists.cartQTY}}</a>
+                                <button class="button ionicon button-small ion-ios-plus-empty  button-plus" data-ng-click="clickPlus(sublists.productID)"></button>
+                            </div>
+                            <div class="vegNonVeg">
+                                <img src={{sublists.vegNonVeg}} width="12">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-scroll>
+    </ion-view>
+</ion-content>

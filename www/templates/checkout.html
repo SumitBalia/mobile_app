@@ -1,0 +1,139 @@
+<ion-content>
+    <ion-view view-title="Check Out" id="" class="list-background">
+        <ion-scroll zooming="true" direction="y" style="height: 100%" overflow-scroll="true">
+            <div class="list" id="checkout-list">
+                <form name="checkoutForm" novalidate="">
+                    <div class="card">
+                        <div class="item item-divider padding">
+                            <h2>Address</h2>
+                        </div>
+                        <div class="item item-text-wrap">
+                            <h4>
+                                {{checkout.address}}
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="item item-divider padding">
+                            <h2>Payment Method</h2>
+                        </div>
+                        <div class="item-text-wrap" ng-model="checkout.paymentMethod">
+                            <ion-radio ng-model="checkout.choice" ng-value="'cod'" class="active">Cash On Delivery</ion-radio>
+                        </div>
+                    </div>
+                    <div class="card checkout">
+                        <div class="item item-divider padding">
+                            <h2>Your Personal Details</h2>
+                        </div>
+                        <div class="item item-text-wrap">
+                            <div class="list">
+                                <label class="item-input item-floating-label">
+                                    <span class="input-label">Name</span>
+                                    <input type="text" placeholder="Please Enter Your Full Name*" ng-model="checkout.name" name="name" ng-minlength="3" required="">
+                                </label>
+                                <div class="validation-msg" ng-show="checkoutForm.$submitted || checkoutForm.name.$touched">
+                                    <div class="animated zoomIn" ng-show="checkoutForm.name.$error.required"><i class="ion-information-circled"></i> Enter Your Name</div>
+                                    <div class="animated zoomIn" ng-show="checkoutForm.name.$error.minlength"><i class="ion-information-circled"></i> Enter minimum 3 letters</div>
+                                </div>
+                                <label class="item-input item-floating-label">
+                                    <span class="input-label">Mobile Number</span>
+                                    <input type="tel" name="number" placeholder="Mobile Number*" ng-model="checkout.number" ng-minlength="10" ng-maxlength="10" ng-pattern="phonePattern" required="">
+                                </label>
+                                <div class="validation-msg" ng-show="checkoutForm.$submitted || checkoutForm.number.$touched">
+                                    <div class="animated zoomIn" ng-show="checkoutForm.number.$error.required"><i class="ion-information-circled"></i> Enter Your Number</div>
+                                    <div class="animated zoomIn" ng-show="checkoutForm.number.$error.pattern && checkoutForm.number.$invalid && checkoutForm.number.$error.minlength" class="help-block"><i class="ion-information-circled"></i> Enter Valid Mobile Number</div>
+                                    <div class="animated zoomIn" ng-show="checkoutForm.number.$error.maxlength"><i class="ion-information-circled"></i> Enter only 10 digit number</div>
+                                </div>
+                                <label class="item-input item-floating-label">
+                                    <span class="input-label">Alternate Number</span>
+                                    <input value="{{phoneNumber}}" type="tel" name="number2" placeholder="Alternate Mobile Number" ng-model="checkout.number2" ng-minlength="10" ng-maxlength="10" ng-pattern="phonePattern2">
+                                </label>
+                                <div class="validation-msg" ng-show="checkoutForm.$submitted || checkoutForm.number2.$touched">
+                                    <div class="animated zoomIn" ng-show="checkoutForm.number2.$error.pattern && checkoutForm.number2.$invalid && checkoutForm.number2.$error.minlength" class="help-block"><i class="ion-information-circled"></i> Enter Valid Mobile Number</div>
+                                    <div class="animated zoomIn" ng-show="checkoutForm.number2.$error.maxlength"><i class="ion-information-circled"></i> Enter only 10 digite number</div>
+                                </div>
+                                <label class="item-input item-floating-label">
+                                    <span class="input-label">Email</span>
+                                    <input type="text" name="email" placeholder="Enter Your Email ID*" ng-model="checkout.email" ng-pattern="email" required="">
+                                </label>
+                                <div class="validation-msg" ng-show="checkoutForm.$submitted || checkoutForm.email.$touched">
+                                    <div class="animated zoomIn" ng-show="checkoutForm.email.$error.required"><i class="ion-information-circled"></i> Enter Your Email ID</div>
+                                    <div class="animated zoomIn" ng-show="checkoutForm.email.$error.pattern && checkoutForm.email.$invalid" class="help-block"><i class="ion-information-circled"></i> Enter Valid Email ID</div>
+                                </div>
+                                <label class="item-input item-floating-label">
+                                    <span class="input-label">Land Mark</span>
+                                    <input type="text" ng-model="checkout.landMark" placeholder="Enter Your Land Mark">
+                                </label>
+                                <select ng-model="checkout.day" name="day" required>
+                                    <option value="">Select</option>
+                                    <option value="today">Today</option>
+                                    <option value="tomorrow">Tomorrow</option>
+                                </select>
+                                <div class="validation-msg" ng-show="checkoutForm.$submitted || checkoutForm.day.$touched">
+                                    <div class="animated zoomIn" ng-show="checkoutForm.day.$error.required"><i class="ion-information-circled"></i> Enter Day</div>
+                                </div>
+                                <select ng-model="checkout.time" required>
+                                    <option value="">Select</option>
+                                    <option value="8:30 - 9:30">8:30 - 9:30</option>
+                                    <option value="9:30 - 10:30">9:30 - 10:30</option>
+                                    <option value="10:30 - 11:30">10:30 - 11:30</option>
+                                    <option value="11:30 - 12:30">11:30 - 12:30</option>
+                                    <option value="12:30 - 1:30">12:30 - 1:30</option>
+                                    <option value="1:30 - 2:30">1:30 - 2:30</option>
+                                    <option value="2:30 - 3:30">2:30 - 3:30</option>
+                                    <option value="3:30 - 4:30">3:30 - 4:30</option>
+                                </select>
+                                <label class="item-input item-floating-label">
+                                    <span class="input-label">Notes</span>
+                                    <textarea ng-model="checkout.msg" placeholder="Notes for the restaurant" cols="5">
+                                    </textarea>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="item item-divider padding">
+                            <h2>Your Total amount is &#x20B9;{{grandTotal}}</h2>
+                        </div>
+                        <!-- <div class="item item-text-wrap">
+                        <button class="ink button button-block button-balanced" ui-sref="app.mycart">Edit cart</button>
+                    </div> -->
+                    </div>
+                    <div class="card marginbottom">
+                        <div class="item item-divider padding">
+                            <h2>Apply Coupon and order food</h2>
+                        </div>
+                        <div class="item item-text-wrap">
+                            <div class="item-input-inset">
+                                <label class="item-input-wrapper">
+                                    <input type="text" placeholder="Coupon code" ng-model="checkout.coupon">
+                                </label>
+                                <button class="ink apply-btn button button-small button-balanced" ng-click="couponApply()">
+                                    Apply
+                                </button>
+                            </div>
+                            <h4 class="text-center padding">Use Coupon Code: FD20 Get 20.00% off on min. purchase of ₹400.00</h4>
+                        </div>
+                    </div>
+                </ion-scroll>
+                <ion-footer-bar>
+                    <input type="submit" value="Order Now" class="ink footer-btn button button-block button-balanced" ng-disabled="checkoutForm.$invalid" ng-click="sendForm()">
+                </ion-footer-bar>
+            </form>
+        </div>
+    </ion-view>
+</ion-content>
+<script id="templates/thankyou.html" type="text/ng-template">
+    <ion-modal-view class="background">
+        <ion-header-bar class="bar bar-header">
+            <button class="button button-clear button-primary" ng-click="modal.hide()"><i class="ion-close-round"></i>
+            </button>
+        </ion-header-bar>
+        <ion-content class="padding" scroll="false">
+            <h3 class="text-center" style="color:#fff;margin-top: 6em;">Thank you for ordering from Night Cafe</h3>
+            <div style="margin: 20px;margin-top: 50px;">
+                <button class="button button-block" ui-sref="app.menulist" ng-click="modal.hide()">Order More</button>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>
